@@ -1,0 +1,33 @@
+{
+    "author": "NiVZ",
+    "dependencies": {},
+    "keywords": [],
+    "name": "tile-loader",
+    "pebble": {
+        "displayName": "TILE LOADER",
+        "enableMultiJS": true,
+        "messageKeys": [],
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/Tiles.png",
+                    "name": "IMAGE_TILES",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt",
+            "chalk"
+        ],
+        "uuid": "45189a9f-eb64-4c04-af5e-373be47ad541",
+        "watchapp": {
+            "watchface": false
+        }
+    },
+    "version": "1.0.0"
+}
