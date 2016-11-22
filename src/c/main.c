@@ -6,17 +6,35 @@ static Window *s_game_window;
 static Layer *s_game_layer;
 
 static GBitmap *tile_set;
-static GBitmap *tile[11][13];
+//static GBitmap *tile[11][13];
+static GBitmap *tile[143];
 
+static uint8_t tile_map[11*9] = { 90, 90, 90, 90, 90, 90, 90, 90, 90, 
+                                  5, 5, 5, 5, 90, 90, 90, 90, 90, 
+                                 90, 90, 90, 90, 90, 90, 90, 90, 90, 
+                                 90, 90, 90, 90, 90, 5, 5, 5, 5, 
+                                 90, 90, 90, 90, 90, 90, 90, 90, 90, 
+                                 5, 5, 5, 5, 90, 90, 90, 90, 90, 
+                                 90, 90, 90, 90, 90, 90, 90, 90, 90, 
+                                 90, 90, 90, 90, 90, 90, 90, 90, 90, 
+                                 90, 90, 90, 90, 90, 2, 3, 4, 90, 
+                                 5, 5, 5, 5, 5, 5, 5, 5, 5,
+                                 5, 5, 5, 5, 5, 5, 5, 5, 5
+                                };
+
+
+  
+  
 static void draw_game_layer(Layer *layer, GContext *ctx) {
 
   // Initialise random number generator with seed
   srand(time(NULL));
   
-  for (int i=0; i<9; i++){
-    for (int j=0; j<11; j++){
+  for (int j=0; j<11; j++){
+    for (int i=0; i<9; i++){
       
-      graphics_draw_bitmap_in_rect(ctx, tile[rand()%11][rand()%13], GRect(i*16,j*16,16,16));
+      //graphics_draw_bitmap_in_rect(ctx, tile[rand()%11][rand()%13], GRect(i*16,j*16,16,16));
+      graphics_draw_bitmap_in_rect(ctx, tile[tile_map[(j*9)+i]], GRect(i*16,j*16,16,16));
     }
   }
   
@@ -32,7 +50,7 @@ static void load_tiles(){
     // Loop through tile set cols
     for (int j=0; j<13; j++){
       // Cut out the tile
-      tile[i][j] = gbitmap_create_as_sub_bitmap(tile_set, GRect( (i*16)+(i*1), (j*16)+(j*1), 16, 16 ));                                    
+      tile[(i*13)+j] = gbitmap_create_as_sub_bitmap(tile_set, GRect( (j*16)+(j*1), (i*16)+(i*1), 16, 16 ));                                    
       
     }
   }
