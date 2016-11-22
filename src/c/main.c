@@ -8,31 +8,19 @@ static Layer *s_game_layer;
 static GBitmap *tile_set;
 static GBitmap *tile[11][13];
 
-static uint8_t tile_map[9][11];
-
-
 static void draw_game_layer(Layer *layer, GContext *ctx) {
 
+  // Initialise random number generator with seed
+  srand(time(NULL));
+  
   for (int i=0; i<9; i++){
     for (int j=0; j<11; j++){
-      graphics_draw_bitmap_in_rect(ctx, tile[i][j], GRect(i*16,j*16,16,16));
+      
+      graphics_draw_bitmap_in_rect(ctx, tile[rand()%11][rand()%13], GRect(i*16,j*16,16,16));
     }
   }
   
 }
-
-/*
-static void load_tile_map(){
-  
-  // create 1 screen map
-  for (int i=0; i<9; i++){
-    for (int j=0; j<11; j++){
-       tile_map[i][j] = tile[i][j];   
-    }
-  }
-}
-*/
-
 
 static void load_tiles(){
   
